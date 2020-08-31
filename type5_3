@@ -1,0 +1,10 @@
+#An itemize billing listing each individual shipment and the charges for it
+select package.package_ID, amount, package_type, pay_type, timeliness
+from package, bill, customer
+where customer.ID = package.customer_ID
+and customer.customer_name = 'james'
+and customer.ID = bill.customer_ID
+and bill.pay_year = 2020
+and 600 <= pay_date and pay_date <700
+and bill.package_ID = package.package_ID
+group by package_ID

@@ -1,0 +1,2 @@
+#I-1
+select ID, customer_name from customer,package, location, delivers where customer.ID=package.customer_ID and package.package_ID = delivers.package_ID and delivers.transportation_ID = '1721' and location.package_ID = package.package_ID and location.tracking_date ='0625' and location.tracking_time = '1500' and location.status = 'on_delivering'

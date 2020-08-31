@@ -1,0 +1,10 @@
+#find the customer who has spent the most money on shipping in the past certain year.
+select customer_ID, sum(amount)
+from bill
+where pay_year = 2020
+group by customer_ID
+having sum(amount)  = (select max(amount_sum)
+from(
+select customer_ID, sum(amount) as amount_sum
+from bill
+group by customer_ID) as result)

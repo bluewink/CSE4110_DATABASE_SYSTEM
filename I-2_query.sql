@@ -1,0 +1,2 @@
+#I-2
+select recipient.recipient_name, recipient_address from recipient, package, location, delivers where recipient.recipient_name=package.recipient_name and recipient.address = package.recipient_address and package.package_ID = delivers.package_ID and delivers.transportation_ID = '1721' and location.package_ID = package.package_ID and location.tracking_date ='0625' and location.tracking_time = '1500' and location.status = 'on_delivering'

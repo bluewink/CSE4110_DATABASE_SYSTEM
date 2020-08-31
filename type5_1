@@ -1,0 +1,11 @@
+#generate the bill
+#simple bill
+#input: customer name, certain month
+select customer.customer_name, address, sum(amount)
+from bill, customer
+where bill.customer_ID = customer.ID
+and customer.customer_name = 'james'
+and pay_year = 2020
+and 600 <= pay_date and pay_date <700
+group by customer_name, address
+

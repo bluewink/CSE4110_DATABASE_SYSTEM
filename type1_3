@@ -1,0 +1,23 @@
+#find the last successful delivery by that truck prior to the crash.
+select package.*, location.tracking_date
+from package, location
+where package.package_ID = location.package_ID 
+and location.tracking_date = 
+(select max(location.tracking_date)
+from package, delivers, location
+where package.package_ID = location.package_ID
+and location.status = 'complete'
+and delivers.package_ID = package.package_ID
+and delivers.transportation_ID = '1721')
+and location. tracking_time = (select max(location.tracking_time)
+from package, delivers, location
+where package.package_ID = location.package_ID
+and location.status = 'complete'
+and delivers.package_ID = package.package_ID
+and delivers.transportation_ID = '1721')
+and location. tracking_year = (select max(location.tracking_year)
+from package, delivers, location
+where package.package_ID = location.package_ID
+and location.status = 'complete'
+and delivers.package_ID = package.package_ID
+and delivers.transportation_ID = '1721')

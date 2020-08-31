@@ -1,0 +1,7 @@
+#find those packages that were not delivered within the promised time.
+
+select package.package_ID
+from package, location
+where package.package_ID = location.package_ID
+and location.status = 'on_delivering'
+and location.tracking_date >= package.scheduled_time

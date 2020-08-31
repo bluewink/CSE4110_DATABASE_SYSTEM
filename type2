@@ -1,0 +1,11 @@
+#find the customer who has shipped the most packages in the past certain year.
+#add scanf year from user
+select customer_ID
+from bill
+where pay_year = 2020
+group by customer_ID
+having count(*)  = (select max(cnt)
+from(
+select customer_ID, count(customer_ID) as cnt
+from bill
+group by customer_ID) as result)

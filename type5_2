@@ -1,0 +1,11 @@
+#bill listing charges by type of service
+
+select package_type, package.package_ID, bill.*
+from bill, customer, package
+where bill.customer_ID = customer.ID
+and package.customer_ID = customer.ID
+and package.package_ID = bill.package_ID
+and customer.customer_name = 'james'
+and pay_year = 2020
+and 600 <= pay_date and pay_date <700
+group by package_type, package.package_ID
